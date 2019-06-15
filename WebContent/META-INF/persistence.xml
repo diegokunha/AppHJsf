@@ -17,9 +17,9 @@
 
 			<!-- DADOS CONEXAO -->
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="root" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/apphjsf" />
+			<property name="hibernate.connection.username" value="i5s3od6ia3nbapf2" />
+			<property name="hibernate.connection.password" value="vj2jhaateubeho9u" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://u0zbt18wwjva9e0v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/u58crbkqn53xdn3x" />
 			<property name="hibernate.default_schema" value="apphjsf" />
 
 			<!-- CONFIGURACAO -->
