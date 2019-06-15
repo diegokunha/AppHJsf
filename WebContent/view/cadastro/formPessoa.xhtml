@@ -1,0 +1,137 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/layout.xhtml">
+
+	<ui:define name="content">
+	
+
+		<script>
+			PrimeFaces.locales['pt_BR'] = {
+				closeText : 'Fechar',
+				prevText : 'Anterior',
+				nextText : 'Próximo',
+				monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril',
+						'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
+						'Outubro', 'Novembro', 'Dezembro' ],
+				monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+						'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+				dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+						'Sexta', 'Sábado' ],
+				dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex',
+						'Sáb' ],
+				dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+				weekHeader : 'Semana',
+				weekNumberTitle : 'Sm',
+				firstDay : 0,
+				isRTL : false,
+				showMonthAfterYear : false,
+				yearSuffix : '',
+				timeOnlyTitle : 'Só Horas',
+				timeText : 'Tempo',
+				hourText : 'Hora',
+				minuteText : 'Minuto',
+				secondText : 'Segundo',
+				currentText : 'Começo',
+				ampm : false,
+				month : 'Mês',
+				week : 'Semana',
+				day : 'Dia',
+				allDayText : 'Todo o Dia'
+			};
+		</script>
+
+		<style>
+.ui-panelgrid .ui-panelgrid-cell {
+	border-width: 0px;
+}
+</style>
+		
+		<p:dialog id="dialog-modal-editar" header="Edita Pessoa">
+			<ui:include src="/view/cadastro/editaPessoa.xhtml" />
+		</p:dialog>
+
+		<h:form id="formPessoa">
+			<p:growl id="msgs" showDetail="true" />
+
+			<p:panel header="Cadastro de Pessoas">
+				<p:panelGrid columns="4" cellpadding="5" id="pgrid">
+					<p:outputLabel for="cpf" value="CPF:" />
+					<p:inputMask id="cpf" value="#{pessoaBean.pessoa.cpf}"
+						mask="999.999.999-99" />
+
+					<p:outputLabel for="nome" value="Nome:" />
+					<p:inputText id="nome" value="#{pessoaBean.pessoa.nome}" />
+
+					<p:outputLabel for="dataNascimento" value="Data de Nascimento:" />
+					<p:calendar id="dataNascimento" timeZone="America/Sao_Paulo"
+						pattern="dd/MM/yyyy" mask="true" navigator="true" locale="pt_BR"
+						value="#{pessoaBean.pessoa.dataNascimento}" />
+
+					<p:outputLabel for="contato" value="Contato: " />
+					<p:inputMask id="contato" mask="(99) 99999-9999"
+						value="#{pessoaBean.pessoa.contato}" />
+
+					<p:outputLabel for="email" value="E-mail: " />
+					<p:inputText id="email" value="#{pessoaBean.pessoa.email}" />
+
+					<p:outputLabel for="renda" value="Renda: " />
+					<p:inputText id="renda" value="#{pessoaBean.pessoa.renda}" />
+
+					<p:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
+				</p:panelGrid>
+			</p:panel>
+			<br />
+			<br />
+
+			<p:dataTable value="#{pessoaBean.pessoas}" var="pes" rows="5"
+				paginator="true">
+				<p:column headerText="CPF"
+						  sortBy="#{pes.cpf}"
+						  filterBy="#{pes.cpf}"
+						  filterMatchMode="contains">
+					<p:outputLabel value="#{pes.cpf}" />
+				</p:column>
+				<p:column headerText="Nome"
+						  sortBy="#{pes.nome}"
+						  filterBy="#{pes.nome}"
+						  filterMatchMode="contains">
+					<p:outputLabel value="#{pes.nome}" />
+				</p:column>
+				<p:column headerText="Data de Nascimento">
+					<h:outputText value="#{pes.dataNascimento}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Contato">
+					<p:outputLabel value="#{pes.contato}" />
+				</p:column>
+				<p:column headerText="E-mail">
+					<p:outputLabel value="#{pes.email}" />
+				</p:column>
+				<p:column style="width=50%">
+
+					<p:commandButton icon="fas fa-pencil-alt" title="Editar"
+						actionListener="#{pessoaBean.buscaPessoa(pes)}"
+						onclick="PF('dialog-modal-editar').show()"
+						update="dialog-modal-editar" />
+
+					<p:commandButton icon="fas fa-trash-alt" title="Excluir"
+						onclick="PF('dlg').show();" type="button">
+					</p:commandButton>
+					<p:dialog header="Remover" widgetVar="dlg">
+						<h:outputText value="Deseja excluir realmente #{pes.nome}?"></h:outputText>
+						<br />
+						<br />
+						<p:commandButton value="OK" action="#{pessoaBean.excluir(pes)}" />
+					</p:dialog>
+				</p:column>
+
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+

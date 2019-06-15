@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<h:form>
+		<p:menubar>
+			<p:menuitem icon="fas fa-home" title="Principal" action="index" />
+			<p:submenu label="Cadastro">
+				<p:menuitem value="Pessoa" action="/view/cadastro/formPessoa" />
+				<p:menuitem value="Fornecedor"/>
+				<p:menuitem value="Produto"/>
+				<p:separator />
+				<p:menuitem value="Usuário"/>
+			</p:submenu>
+			
+			<p:submenu label="Estoque">
+				<p:menuitem value="Inventário"/>
+				<p:menuitem value="Movimentação"/>
+			</p:submenu>
+			
+			<p:submenu label="Importação">
+				<p:menuitem value="XML" action="/view/importacao/impXml"/>
+			</p:submenu>
+
+			<f:facet name="options">
+				<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Pesquisar"/>
+				<p:commandButton type="button" icon="fas fa-sign-out-alt" title="Sair"/>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+</ui:composition>

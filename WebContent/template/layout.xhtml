@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>APP HJsf</title>
+	<link rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+			integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+			crossorigin="anonymous" />
+
+</h:head>
+
+<h:body>
+
+	<div class="row" id="header">
+		<ui:include src="/template/header.xhtml" />
+	</div>
+	
+	<div class="row" id="content" style="height: 560px;">
+		<ui:insert name="content" />
+	</div>
+	
+	<footer>
+		<ui:include src="/template/footer.xhtml" />
+	</footer>
+</h:body>
+
+</html>
