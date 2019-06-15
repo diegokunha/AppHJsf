@@ -56,6 +56,7 @@ public class ImportacaoXmlBean {
 		return notaFiscal;
 	}
 
+	//seleciona o arquivo
 	public void upload() {
 
 		if (arquivo != null) {
@@ -68,6 +69,7 @@ public class ImportacaoXmlBean {
 		}
 	}
 
+	//monta o arquivo
 	public void handleFileUpload(FileUploadEvent event) throws IOException, Exception {
 		this.arquivo = event.getFile();
 		new File("D:\\temp");

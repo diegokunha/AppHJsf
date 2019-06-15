@@ -11,6 +11,8 @@ import javax.faces.context.FacesContext;
 import br.com.dksweb.apphjsf.dao.DaoGenericImplement;
 import br.com.dksweb.apphjsf.entity.Pessoa;
 
+//Bean da view Pessoa
+
 @ViewScoped
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {

@@ -7,6 +7,8 @@ import javax.persistence.EntityTransaction;
 
 import br.com.dksweb.apphjsf.util.HibernateUtil;
 
+
+//Classe de Bae para o DAO
 public class DaoGenericImplement<T> implements DaoGeneric<T> {
 
 	@Override
